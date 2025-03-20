@@ -128,11 +128,31 @@ const createBulk = async (req,res) => {
     }
 }
 
+const getAirports = async (req,res) => {
+    try {
+        const airports = await cityService.getAllAirports(req.params.id);
+        return res.status(200).json({
+            data: airports,
+            success: true,
+            err: {},
+            message: 'Successfully fetched all airports belongs to particular city'
+        })
+    } catch (error) {
+        return res.status(500).json({
+            data: {},
+            success: false,
+            message: "Not able to fetch all airports",
+            err: error
+        });
+    }
+}
+
 module.exports = {
     create,
     destroy,
     update,
     get,
     getAll,
-    createBulk
+    createBulk,
+    getAirports
 }

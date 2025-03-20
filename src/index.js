@@ -6,10 +6,6 @@ const ApiRoutes = require('./routes/index');
 
 const db = require('./models/index');
 
-
-const CityRepository = require('./repository/city-repository');
-const cityRepository = new CityRepository();
-
 const setupAndStartServer = async () => {
     const app = express();
 
@@ -24,9 +20,6 @@ const setupAndStartServer = async () => {
         // if(process.env.SYNC_DB) {
         //     db.sequelize.sync({alter: true});
         // }
-        
-        const cities = cityRepository.createBulkCity([{name : 'mysore'},{name: 'banaras'},{name: 'ooti'},{name: 'manglore'}]);
-        console.log(cities);
     });
 }
 

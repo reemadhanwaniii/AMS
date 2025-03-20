@@ -9,6 +9,7 @@ class CityRepository {
             });
             return city;
         }catch(error) {
+            console.log("Something went wrong in City Repository");
             throw {error};
         }
     }
@@ -22,6 +23,7 @@ class CityRepository {
             });
             return true;
         } catch (error) {
+            console.log("Something went wrong in City Repository");
             throw {error};
         }
     }
@@ -40,6 +42,7 @@ class CityRepository {
             await city.save();
             return city;
         } catch (error) {
+            console.log("Something went wrong in City Repository");
             throw {error}
         }
     }
@@ -49,6 +52,7 @@ class CityRepository {
             const city = await City.findByPk(cityId);
             return city;
         } catch (error) {
+            console.log("Something went wrong in City Repository");
             throw {error}
         }
     }
@@ -69,7 +73,18 @@ class CityRepository {
             const cities = await City.findAll();
             return cities;
         } catch (error) {
+            console.log("Something went wrong in City Repository");
             throw {error}
+        }
+    }
+
+    async createBulkCity(obj) {  //array of data looks like [{},{},{}]
+        try {
+            const cities = await City.bulkCreate(obj);
+            return cities;
+        } catch (error) {
+            console.log("Something went wrong in City Repository");
+            throw {error};
         }
     }
 }
